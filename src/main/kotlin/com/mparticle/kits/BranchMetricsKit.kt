@@ -2,6 +2,7 @@ package com.mparticle.kits
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import com.mparticle.AttributionError
 import com.mparticle.AttributionResult
 import com.mparticle.MPEvent
@@ -222,6 +223,7 @@ class BranchMetricsKit : KitIntegration(), KitIntegration.EventListener, Commerc
             val result = AttributionResult()
                 .setParameters(jsonResult)
                 .setServiceProviderId(this.configuration.kitId)
+            Log.d("JAQ", " - kit - Init new branch session")
             kitManager.onResult(result)
         }
         if (branchError != null) {
@@ -229,12 +231,14 @@ class BranchMetricsKit : KitIntegration(), KitIntegration.EventListener, Commerc
                 val error = AttributionError()
                     .setMessage(branchError.toString())
                     .setServiceProviderId(this.configuration.kitId)
+                Log.d("JAQ", " - kit - Branch session already exists")
                 kitManager.onError(error)
             }
         }
     }
 
     override fun onApplicationForeground() {
+        Log.d("JAQ", " - kit - onApplicationForeground()")
         Branch.sessionBuilder(null).withCallback(this).init()
     }
 

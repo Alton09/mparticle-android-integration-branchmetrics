@@ -1,11 +1,10 @@
 package com.mparticle.branchsample.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mparticle.MPEvent;
 import com.mparticle.MParticle;
@@ -52,6 +51,7 @@ public class SplashActivity extends AppCompatActivity implements SampleApplicati
      **/
     @Override
     protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         this.setIntent(intent);
     }
     

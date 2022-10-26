@@ -1,6 +1,7 @@
 package com.mparticle.branchsample;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.mparticle.AttributionError;
 import com.mparticle.AttributionListener;
@@ -32,6 +33,7 @@ public class SampleApplication extends Application implements AttributionListene
                 .build();
         
         MParticle.start(options);
+        Branch.getAutoInstance(this, "REPLACE_ME_WITH_API_KEY");
     }
     
     public static void setBranchEventCallback(IBranchEvents branchEventCallback) {
@@ -82,6 +84,7 @@ public class SampleApplication extends Application implements AttributionListene
 //                //handle the Branch link click
 //            }
             if (branchEventCallback != null) {
+                Log.d("JAQ", " - app - onResult() params = " + params);
                 branchEventCallback.onBranchInitialised(params);
             }
         }
